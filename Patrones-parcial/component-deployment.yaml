@@ -18,4 +18,4 @@ spec:
         - image: 'cyldecryo/parcial-1-patrones:417d32c16a6e08d8d9d8d32dcc632d51445332ff'
           name: back-end
           ports:
-            - containerPort: 3000
+            - containerPort: 9090
