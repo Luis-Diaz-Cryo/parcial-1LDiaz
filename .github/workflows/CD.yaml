@@ -36,7 +36,7 @@ jobs:
           image: cyldecryo/parcial-1-patrones
           tags: ${{ github.sha }}
           registry: docker.io
-          dockerfile: Dockerfile
+          dockerfile: Patrones-parcial/Dockerfile
           username: cyldecryo
           password: ${{ secrets.DockPassword }}
 
