@@ -12,6 +12,9 @@ jobs:
       - name: Descargar el proyecto
         uses: actions/checkout@v4
 
+      - name: List files in Patrones-parcial
+        run: ls -la Patrones-parcial
+
       - name: Instalando java
         uses: actions/setup-java@v4
         with:
@@ -22,10 +25,10 @@ jobs:
         uses: gradle/gradle-build-action@v2.9.0
 
       - name: Compilando el proyecto
+        working-directory: Patrones-parcial
         run: |
-          chmod +x Patrones-parcial/gradlew
-          Patrones-parcial/gradlew bootJar
-      
+          chmod +x gradlew
+          ./gradlew bootJar
 
       - name: Construir y Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v6
