@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: front-end
+  name: back-end
   labels:
-    app: front-end
+    app: back-end
 spec:
   selector:
     matchLabels:
-      app: front-end
+      app: back-end
   template:
     metadata:
       labels:
-        app: front-end
+        app: back-end
     spec:
       containers:
         - image: 'cyldecryo/parcial-1-patrones:0.0.0'
-          name: front-end
+          name: back-end
           ports:
             - containerPort: 3000
