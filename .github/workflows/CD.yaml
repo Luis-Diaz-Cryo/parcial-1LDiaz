@@ -1,0 +1,57 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el proyecto
+        uses: actions/checkout@v4
+
+      - name: Instalando java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurando gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Compilando el proyecto
+        run: |
+          chmod +x ./gradlew
+          ./gradlew build
+
+      - name: Construir y Push Docker Image
+        uses: mr-smither-excellent/docker-build-push@v6
+        with:
+          image: cyldecryo/parcial-1-patrones
+          tags: ${{ github.sha }}
+          registry: docker.io
+          dockerfile: Dockerfile
+          username: cyldecryo
+          password: ${{ secrets.DockPassword }}
+
+      - name: yq - portable yaml processor
+        uses: mikefarah/yq@v4.44.3
+
+      - name: Actualizar tag de imagen en deployment.yaml
+        env:
+          IMAGE_NAME: cyldecryo/parcial-1-patrones
+          NEW_TAG: ${{ github.sha }}
+        run: |
+          yq eval ".spec.template.spec.containers[0].image = \"${{ env.IMAGE_NAME }}:${{ env.NEW_TAG }}\"" -i Patrones-parcial/component-deployment.yaml
+
+      - name: Commit y push cambios
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add path/to/your/deployment-file.yaml
+          git commit -m "Actualizar imagen a ${{ env.IMAGE_NAME }}:${{ env.NEW_TAG }}"
+          git push origin main
