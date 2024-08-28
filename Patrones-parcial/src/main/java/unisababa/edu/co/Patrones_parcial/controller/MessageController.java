@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import unisababa.edu.co.Patrones_parcial.entity.Message;
+import unisababa.edu.co.Patrones_parcial.entity.Messages;
+
 import unisababa.edu.co.Patrones_parcial.service.MessageService;
 
 import java.util.List;
@@ -25,14 +26,14 @@ public class MessageController {
     }
 
     @PostMapping("/save/message")
-    public ResponseEntity<Message> guardarMessage(@RequestBody Message message) {
-        Message newMessage = service.guardarMessage(message);
+    public ResponseEntity<Messages> guardarMessage(@RequestBody Messages messages) {
+        Messages newMessage = service.guardarMessage(messages);
         return ResponseEntity.status(HttpStatus.CREATED).body(newMessage);
     }
 
     @GetMapping("/messages")
-    public ResponseEntity<List<Message>> consultarMessages() {
-        List<Message> messages = service.consultarMessages();
+    public ResponseEntity<List<Messages>> consultarMessages() {
+        List<Messages> messages = service.consultarMessages();
         return ResponseEntity.status(HttpStatus.OK).body(messages);
     }
 
