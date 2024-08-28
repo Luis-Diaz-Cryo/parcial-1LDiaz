@@ -15,7 +15,7 @@ spec:
         app: back-end
     spec:
       containers:
-        - image: 'cyldecryo/parcial-1-patrones:25b3c0b6d2b16fbfad7e046f5ec050bebf9ab6a6'
+        - image: 'cyldecryo/parcial-1-patrones:21f1b972cfe878cb2fdb25e0dd453dfea853f5b1'
           name: back-end
           ports:
             - containerPort: 9090
@@ -35,4 +35,4 @@ spec:
   template:
     spec:
       containers:
-        - image: cyldecryo/parcial-1-patrones:25b3c0b6d2b16fbfad7e046f5ec050bebf9ab6a6
+        - image: cyldecryo/parcial-1-patrones:21f1b972cfe878cb2fdb25e0dd453dfea853f5b1
