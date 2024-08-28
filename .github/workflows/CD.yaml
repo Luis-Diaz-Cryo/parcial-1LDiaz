@@ -23,8 +23,8 @@ jobs:
 
       - name: Compilando el proyecto
         run: |
-          chmod +x ./gradlew
-          ./gradlew bootJar
+          chmod +x Patrones-parcial/gradlew
+          Patrones-parcial/gradlew bootJar
       
 
       - name: Construir y Push Docker Image
