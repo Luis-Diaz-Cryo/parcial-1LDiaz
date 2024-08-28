@@ -27,7 +27,7 @@ jobs:
           ./gradlew build
 
       - name: Construir y Push Docker Image
-        uses: mr-smither-excellent/docker-build-push@v6
+        uses: mr-smithers-excellent/docker-build-push@v6
         with:
           image: cyldecryo/parcial-1-patrones
           tags: ${{ github.sha }}
