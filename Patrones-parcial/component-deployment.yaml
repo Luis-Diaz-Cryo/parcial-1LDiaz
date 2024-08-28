@@ -14,7 +14,7 @@ spec:
         app: front-end
     spec:
       containers:
-        - image: 'cyldecryo/parcial-1-patrones:0.0.0'
+        - image: 'cyldecryo/parcial-1-patrones:6d6f3cc3cf885025a7028cf62b2cc892aca1805d'
           name: front-end
           ports:
             - containerPort: 3000
