@@ -4,7 +4,7 @@ package unisababa.edu.co.Patrones_parcial.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Table
+@Table(name = "message")
 @Entity
 @Data
 public class Message {
