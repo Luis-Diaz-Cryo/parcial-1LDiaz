@@ -19,20 +19,3 @@ spec:
           name: back-end
           ports:
             - containerPort: 9090
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: spring-boot-service
-  namespace: back-end
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 9090
-  selector:
-    app: back-end
-  template:
-    spec:
-      containers:
-        - image: cyldecryo/parcial-1-patrones:d35c3e394865783818803edc8f86b36a370fa332
