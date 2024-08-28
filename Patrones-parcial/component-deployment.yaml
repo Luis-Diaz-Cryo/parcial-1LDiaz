@@ -32,7 +32,3 @@ spec:
       targetPort: 9090
   selector:
     app: back-end
-  template:
-    spec:
-      containers:
-        - image: cyldecryo/parcial-1-patrones:8417f6fc69b21fe505a615eade68ca318bb4a6a4
