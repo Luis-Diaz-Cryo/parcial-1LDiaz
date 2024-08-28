@@ -24,7 +24,7 @@ jobs:
       - name: Compilando el proyecto
         run: |
           chmod +x ./gradlew
-          ./gradlew build
+          ./gradlew bootJar
 
       - name: Construir y Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v6
