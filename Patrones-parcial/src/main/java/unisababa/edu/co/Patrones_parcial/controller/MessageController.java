@@ -16,7 +16,7 @@ import unisababa.edu.co.Patrones_parcial.service.MessageService;
 import java.util.List;
 
 @RestController
-@CrossOrigin("http://localhost:3000/")
+@CrossOrigin("http://34.69.139.36:30170/")
 public class MessageController {
     private final MessageService service;
 
